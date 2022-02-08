@@ -1,0 +1,100 @@
+# Criando Base de dados
+create database bernoulli;
+
+# Criando tabela para inclução de clubes
+CREATE TABLE IF NOT EXISTS `bernoulli`.`resultado` (
+  `id_resultado` INT NOT NULL,
+  `resultado` VARCHAR(45),
+  `id_time` INT,
+  `gols_marcados` INT,
+  `gols_sofridos` INT,
+  PRIMARY KEY (`id_resultado`))
+ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS `bernoulli`.`times_serie_a` (
+  `id_time` INT NOT NULL AUTO_INCREMENT,
+  `nome_time` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_time`),
+  UNIQUE INDEX `id_time_UNIQUE` (`id_time` ASC)
+ )
+ENGINE = InnoDB;
+
+#inserindo os times
+INSERT INTO `bernoulli`.`times_serie_a` (`id_time`, `nome_time`) VALUES ('2', 'América-MG');
+INSERT INTO `bernoulli`.`times_serie_a` (`id_time`, `nome_time`) VALUES ('3', 'Athletico-PR');
+INSERT INTO `bernoulli`.`times_serie_a` (`id_time`, `nome_time`) VALUES ('4', 'Atlético-GO');
+INSERT INTO `bernoulli`.`times_serie_a` (`id_time`, `nome_time`) VALUES ('5', 'Atlético-MG');
+INSERT INTO `bernoulli`.`times_serie_a` (`id_time`, `nome_time`) VALUES ('6', 'Avaí');
+INSERT INTO `bernoulli`.`times_serie_a` (`id_time`, `nome_time`) VALUES ('7', 'Botafogo');
+INSERT INTO `bernoulli`.`times_serie_a` (`id_time`, `nome_time`) VALUES ('8', 'Bragantino');
+INSERT INTO `bernoulli`.`times_serie_a` (`id_time`, `nome_time`) VALUES ('9', 'Ceará');
+INSERT INTO `bernoulli`.`times_serie_a` (`id_time`, `nome_time`) VALUES ('10', 'Corinthians');
+INSERT INTO `bernoulli`.`times_serie_a` (`id_time`, `nome_time`) VALUES ('11', 'Coritiba');
+INSERT INTO `bernoulli`.`times_serie_a` (`id_time`, `nome_time`) VALUES ('12', 'Cuiabá');
+INSERT INTO `bernoulli`.`times_serie_a` (`id_time`, `nome_time`) VALUES ('13', 'Flamengo');
+INSERT INTO `bernoulli`.`times_serie_a` (`id_time`, `nome_time`) VALUES ('14', 'Fluminense');
+INSERT INTO `bernoulli`.`times_serie_a` (`id_time`, `nome_time`) VALUES ('15', 'Fortaleza');
+INSERT INTO `bernoulli`.`times_serie_a` (`id_time`, `nome_time`) VALUES ('16', 'Goiás');
+INSERT INTO `bernoulli`.`times_serie_a` (`id_time`, `nome_time`) VALUES ('17', 'Internacional');
+INSERT INTO `bernoulli`.`times_serie_a` (`id_time`, `nome_time`) VALUES ('18', 'Juventude');
+INSERT INTO `bernoulli`.`times_serie_a` (`id_time`, `nome_time`) VALUES ('19', 'Palmeiras');
+INSERT INTO `bernoulli`.`times_serie_a` (`id_time`, `nome_time`) VALUES ('20', 'Santos');
+INSERT INTO `bernoulli`.`times_serie_a` (`id_time`, `nome_time`) VALUES ('21', 'São Paulo');
+
+#cadastrando times nas tabela sem pontos
+INSERT INTO `bernoulli`.`resultado` (`id_resultado`, `id_time`, `gols_marcados`, `gols_sofridos`) VALUES ('107', '2', '0', '0');
+INSERT INTO `bernoulli`.`resultado` (`id_resultado`, `id_time`, `gols_marcados`, `gols_sofridos`) VALUES ('108', '3', '0', '0');
+INSERT INTO `bernoulli`.`resultado` (`id_resultado`, `id_time`, `gols_marcados`, `gols_sofridos`) VALUES ('109', '4', '0', '0');
+INSERT INTO `bernoulli`.`resultado` (`id_resultado`, `id_time`, `gols_marcados`, `gols_sofridos`) VALUES ('110', '5', '0', '0');
+INSERT INTO `bernoulli`.`resultado` (`id_resultado`, `id_time`, `gols_marcados`, `gols_sofridos`) VALUES ('111', '6', '0', '0');
+INSERT INTO `bernoulli`.`resultado` (`id_resultado`, `id_time`, `gols_marcados`, `gols_sofridos`) VALUES ('112', '7', '0', '0');
+INSERT INTO `bernoulli`.`resultado` (`id_resultado`, `id_time`, `gols_marcados`, `gols_sofridos`) VALUES ('113', '8', '0', '0');
+INSERT INTO `bernoulli`.`resultado` (`id_resultado`, `id_time`, `gols_marcados`, `gols_sofridos`) VALUES ('114', '9', '0', '0');
+INSERT INTO `bernoulli`.`resultado` (`id_resultado`, `id_time`, `gols_marcados`, `gols_sofridos`) VALUES ('115', '10', '0', '0');
+INSERT INTO `bernoulli`.`resultado` (`id_resultado`, `id_time`, `gols_marcados`, `gols_sofridos`) VALUES ('116', '11', '0', '0');
+INSERT INTO `bernoulli`.`resultado` (`id_resultado`, `id_time`, `gols_marcados`, `gols_sofridos`) VALUES ('117', '12', '0', '0');
+INSERT INTO `bernoulli`.`resultado` (`id_resultado`, `id_time`, `gols_marcados`, `gols_sofridos`) VALUES ('118', '13', '0', '0');
+INSERT INTO `bernoulli`.`resultado` (`id_resultado`, `id_time`, `gols_marcados`, `gols_sofridos`) VALUES ('119', '14', '0', '0');
+INSERT INTO `bernoulli`.`resultado` (`id_resultado`, `id_time`, `gols_marcados`, `gols_sofridos`) VALUES ('120', '15', '0', '0');
+INSERT INTO `bernoulli`.`resultado` (`id_resultado`, `id_time`, `gols_marcados`, `gols_sofridos`) VALUES ('121', '16', '0', '0');
+INSERT INTO `bernoulli`.`resultado` (`id_resultado`, `id_time`, `gols_marcados`, `gols_sofridos`) VALUES ('122', '17', '0', '0');
+INSERT INTO `bernoulli`.`resultado` (`id_resultado`, `id_time`, `gols_marcados`, `gols_sofridos`) VALUES ('123', '18', '0', '0');
+INSERT INTO `bernoulli`.`resultado` (`id_resultado`, `id_time`, `gols_marcados`, `gols_sofridos`) VALUES ('124', '19', '0', '0');
+INSERT INTO `bernoulli`.`resultado` (`id_resultado`, `id_time`, `gols_marcados`, `gols_sofridos`) VALUES ('125', '20', '0', '0');
+INSERT INTO `bernoulli`.`resultado` (`id_resultado`, `id_time`, `gols_marcados`, `gols_sofridos`) VALUES ('126', '21', '0', '0');
+
+#query para tabela
+SELECT 
+	concat('img/', t.id_time, '.png') as imag,
+    t.nome_time,    
+	IFNULL(SUM(resultado), 0) AS 'pontos',
+    IF(COUNT(id_resultado) = null, 0, COUNT(id_resultado)-1) AS 'jogos',
+    (SELECT 
+            COUNT(id_resultado)
+        FROM
+            bernoulli.resultado
+        WHERE
+            resultado = 3 AND id_time = t.id_time) AS 'vitoria',
+    (SELECT 
+            COUNT(id_resultado)
+        FROM
+            bernoulli.resultado
+        WHERE
+            resultado = 1 AND id_time = t.id_time) AS 'empate',
+    (SELECT 
+            COUNT(id_resultado)
+        FROM
+            bernoulli.resultado
+        WHERE
+            resultado = 0 AND id_time = t.id_time) AS 'derrota',
+    SUM(gols_marcados) AS 'gols_pro',
+    SUM(gols_sofridos) AS 'gols_cont',
+    SUM(gols_marcados - gols_sofridos) AS 'saldo_gols'
+FROM
+    bernoulli.resultado
+        LEFT JOIN
+    times_serie_a t ON t.id_time = resultado.id_time
+GROUP BY t.nome_time, t.id_time ORDER BY pontos DESC, vitoria DESC, saldo_gols DESC, gols_pro DESC, t.nome_time;
+    
+
